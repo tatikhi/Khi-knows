@@ -958,10 +958,11 @@
                 return;
             }
 
-            const childAge = ageInput ? parseInt(ageInput, 10) : 3;
+            // Берем реальное значение из инпута возраста (а если поле пустое, подставляем 3)
+            const childAge = ageInput !== '' ? parseInt(ageInput, 10) : 3;
             const yearWord = getYearWord(childAge);
             
-            // Формируем текст сообщения для Telegram с правильным склонением (например: "возраст: 3 года")
+            // Формируем текст сообщения для Telegram с правильным склонением (например: 1 год, 2 года, 5 лет)
             const message = encodeURIComponent(`Здравствуйте! Хочу приобрести тариф «${tariffName}». Ребенок: ${nameInput}, возраст: ${childAge} ${yearWord}.`);
             
             // Перенаправляем в Telegram на ваш аккаунт
