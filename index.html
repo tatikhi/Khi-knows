@@ -2,20 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Английский для малышей 2-5 лет | Мягкая методика TPR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Английский для малышей 2–5 лет | Плавная методика TPR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #FBF9F5;
+            --bg-color: #F8F6F0;
             --card-bg: #FFFFFF;
             --text-primary: #2D3748;
             --text-secondary: #4A5568;
-            --accent: #5A9682;
-            --accent-hover: #487B6A;
-            --accent-light: #EBF3F0;
+            --accent: #4A8B75;
+            --accent-hover: #3A715F;
+            --accent-light: #E8F2EE;
+            --accent-glow: rgba(74, 139, 117, 0.15);
             --border-color: #E2E8F0;
-            --radius: 16px;
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-card: 0 20px 40px rgba(74, 139, 117, 0.08);
         }
 
         * {
@@ -29,14 +34,16 @@
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* Header */
         header {
             padding: 24px 0;
             display: flex;
@@ -46,33 +53,56 @@
 
         .logo {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--accent);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+        }
+
+        .logo svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent);
+        }
+
+        .header-badge {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 6px 14px;
+            border-radius: 30px;
         }
 
         /* Hero Section */
         .hero {
-            padding: 50px 0 70px;
+            padding: 40px 0 60px;
             text-align: center;
         }
 
-        .badge {
-            display: inline-block;
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background-color: var(--accent-light);
             color: var(--accent);
-            padding: 6px 16px;
+            padding: 8px 18px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+        }
+
+        .badge-pill svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent);
         }
 
         h1 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
-            font-weight: 700;
+            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            font-weight: 800;
             margin-bottom: 20px;
             line-height: 1.2;
             color: #1A202C;
@@ -80,38 +110,53 @@
 
         h1 span {
             color: var(--accent);
+            position: relative;
         }
 
         .hero p {
-            font-size: 1.15rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 35px;
+            max-width: 740px;
+            margin: 0 auto 40px;
         }
 
         /* Personalization Block */
         .personalize-box {
             background: var(--card-bg);
             border: 2px solid var(--accent-light);
-            border-radius: var(--radius);
-            padding: 30px;
-            max-width: 600px;
-            margin: 0 auto 50px;
-            box-shadow: 0 10px 30px rgba(90, 150, 130, 0.08);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            max-width: 640px;
+            margin: 0 auto 60px;
+            box-shadow: var(--shadow-card);
             text-align: left;
         }
 
         .personalize-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
             color: var(--text-primary);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .personalize-box h3 svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+        }
+
+        .personalize-box p.subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
         }
 
         .form-row {
             display: grid;
-            grid-template-columns: 1fr 120px;
-            gap: 15px;
+            grid-template-columns: 1fr 130px;
+            gap: 16px;
         }
 
         @media (max-width: 600px) {
@@ -133,79 +178,189 @@
         }
 
         .form-group input {
-            padding: 12px 16px;
+            padding: 14px 18px;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: var(--radius-sm);
             font-family: inherit;
             font-size: 1rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: all 0.2s ease;
+            background: #FAFAFA;
         }
 
         .form-group input:focus {
             border-color: var(--accent);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px var(--accent-glow);
         }
 
-        /* Features Section */
-        .features {
+        /* About / Method Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8vw, 2.5rem, 2.4rem);
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1A202C;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 70px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
         }
 
         .feature-card {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--radius);
+            padding: 36px 30px;
+            border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-subtle);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .icon-box {
+            width: 54px;
+            height: 54px;
+            background: var(--accent-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent);
         }
 
         .feature-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
         .feature-card p {
             font-size: 0.95rem;
             color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Teacher Bio Section */
+        .teacher-section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        @media (max-width: 850px) {
+            .teacher-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 35px 20px;
+            }
+        }
+
+        .teacher-photo {
+            width: 100%;
+            height: 320px;
+            background: #E2E8F0;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-photo svg {
+            width: 80px;
+            height: 80px;
+            fill: #CBD5E0;
+        }
+
+        .teacher-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #1A202C;
+        }
+
+        .teacher-role {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .teacher-content p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
 
         /* Pricing Section */
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-bottom: 80px;
+            align-items: stretch;
         }
 
         .price-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: 35px 30px;
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
             display: flex;
             flex-direction: column;
             position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
         }
 
         .price-card.featured {
             border: 2px solid var(--accent);
-            box-shadow: 0 15px 35px rgba(90, 150, 130, 0.12);
+            box-shadow: var(--shadow-card);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .price-card.featured {
+                transform: none;
+            }
         }
 
         .popular-badge {
             position: absolute;
-            top: -14px;
+            top: -16px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--accent);
@@ -213,64 +368,92 @@
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 20px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 12px rgba(74, 139, 117, 0.3);
         }
 
         .price-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1A202C;
+        }
+
+        .price-card .desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            min-height: 40px;
         }
 
         .price {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.6rem;
+            font-weight: 800;
             color: var(--accent);
-            margin-bottom: 25px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
         .features-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             flex-grow: 1;
         }
 
         .features-list li {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 24px;
+            margin-bottom: 14px;
+            padding-left: 28px;
             position: relative;
         }
 
         .features-list li::before {
-            content: "✓";
+            content: "";
             position: absolute;
             left: 0;
-            color: var(--accent);
-            font-weight: 700;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234A8B75'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
         }
 
         .btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background-color: var(--accent);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: var(--radius-sm);
             font-family: inherit;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            text-align: center;
             text-decoration: none;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s ease, transform 0.1s ease;
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
         }
 
         .btn-outline {
@@ -283,13 +466,44 @@
             background-color: var(--accent-light);
         }
 
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            color: #1A202C;
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
         /* Footer */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -298,59 +512,100 @@
     <div class="container">
         <header>
             <div class="logo">
-                <span>🌱</span> Английский для малышей
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <span>Английский для малышей</span>
             </div>
-            <div style="font-size: 0.9rem; color: var(--text-secondary);">Модуль 1 из 5</div>
+            <div class="header-badge">Модуль 1 из 5</div>
         </header>
 
         <section class="hero">
-            <div class="badge">Методика TPR без экранов и стресса</div>
-            <h1>Плавный старт в английский язык <span>для детей 2–6 лет</span></h1>
-            <p>Всего 3–5 минут в день активных игр под аудиодорожку вместе с вами. Никаких учебников, усаживаний за парту и гаджетов — только естественное погружение через движение.</p>
+            <div class="badge-pill">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                Методика TPR без экранов и стресса
+            </div>
+            <h1>Плавный старт в английский язык<br><span>для детей 2–6 лет</span></h1>
+            <p>Всего 3–5 минут в день активных игр под аудиодорожку вместе с вами. Забудьте про скучные учебники, усаживания за парту и гаджеты — только естественное погружение через движение и улыбки.</p>
             
-            <!-- Интерактивная форма для персонализации трекера -->
+            <!-- Personalization Block -->
             <div class="personalize-box">
-                <h3>✨ Настроим личный кабинет для вашего ребенка</h3>
+                <h3>
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                    Настроим персональный интерактивный трекер
+                </h3>
+                <p class="subtitle">Введите имя и возраст ребенка, чтобы после оплаты сразу активировать его личный кабинет.</p>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="childName">Имя ребенка</label>
-                        <input type="text" id="childName" placeholder="например, Алиса" required>
+                        <input type="text" id="childName" placeholder="например, Машенька" required>
                     </div>
                     <div class="form-group">
                         <label for="childAge">Возраст</label>
-                        <input type="number" id="childAge" placeholder="например, 3" min="1" max="10" required>
+                        <input type="number" id="childAge" placeholder="3" min="1" max="10" required>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="features">
+        <!-- Features / Benefits -->
+        <div class="section-header">
+            <h2>Почему малыши влюбляются в этот английский?</h2>
+            <p>Программа создана с учетом особенностей развития детей от 2 до 6 лет</p>
+        </div>
+
+        <section class="features-grid">
             <div class="feature-card">
-                <h3>🎵 Аудиоформат</h3>
-                <p>Ребенок двигается, повторяет за вами и слушает правильную речь педагога, не портя зрение у экрана.</p>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                </div>
+                <h3>Аудиоформат без экранов</h3>
+                <p>Ребенок не портит зрение перед монитором. Он слушает живой голос педагога, двигается и играет в реальном пространстве.</p>
             </div>
             <div class="feature-card">
-                <h3>⏱️ Всего 3–5 минут</h3>
-                <p>Идеальная длительность для удержания внимания малыша. Занимайтесь тогда, когда удобно.</p>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.47 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                </div>
+                <h3>Всего 3–5 минут в день</h3>
+                <p>Идеальный интервал для удержания внимания малыша. Никаких слез, капризов и утомительных часовых занятий.</p>
             </div>
             <div class="feature-card">
-                <h3>🧸 Методика TPR</h3>
-                <p>Полное физическое реагирование: запоминание слов через движения тела, жесты и игры.</p>
+                <div class="icon-box">
+                    <svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 13.43 12 12 13.43 13.43 17 12 18.43 13.43 19.86 17 16.29l3.57 3.57 1.43-1.43L18.43 17l2.14-2.14zM11 4C9.34 4 8 5.34 8 7s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <h3>Методика TPR (Total Physical Response)</h3>
+                <p>Запоминание слов происходит через тело, жесты и эмоции. Ребенок «проживает» язык естественным путем, как родной.</p>
             </div>
         </section>
 
-        <h2 class="section-title">Выберите ваш формат участия</h2>
+        <!-- Teacher Section -->
+        <section class="teacher-section">
+            <div class="teacher-photo">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <div class="teacher-content">
+                <h3>Приветствую вас! Меня зовут [Ваше Имя]</h3>
+                <span class="teacher-role">Детский педагог-лингвист, автор методики</span>
+                <p>Я помогаю мамам, папам, бабушкам и дедушкам мягко и бережно познакомить малышей с английским языком с самого раннего возраста.</p>
+                <p>Моя цель — сделать так, чтобы английский не был для ребенка стрессом или школьной обязанностью. Это веселая игра, в которой участвует вся семья!</p>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <div class="section-header">
+            <h2>Выберите формат участия в Модуле 1</h2>
+            <p>Выберите подходящий тариф и начните увлекательное путешествие в мир английского</p>
+        </div>
 
         <section class="pricing-grid">
             <!-- Тариф 1 -->
             <div class="price-card">
                 <h3>Я сам(а)!</h3>
+                <div class="desc">Самостоятельное изучение в удобном темпе для всей семьи.</div>
                 <div class="price">990 ₽</div>
                 <ul class="features-list">
-                    <li>Бессрочный доступ к трекеру (Модуль 1)</li>
-                    <li>Игра «Мемори» + фирменная раскраска</li>
-                    <li>Именной Сертификат об окончании</li>
-                    <li>Памятка для родителей</li>
+                    <li>Бессрочный доступ к персональному сайту-трекеру (Модуль 1)</li>
+                    <li>Интерактивная игра «Мемори» + фирменная раскраска</li>
+                    <li>Именной Сертификат об окончании модуля</li>
+                    <li>Удобная памятка для родителей</li>
                 </ul>
                 <button class="btn btn-outline" onclick="proceedToPayment('sam', 990)">Выбрать тариф</button>
             </div>
@@ -359,12 +614,13 @@
             <div class="price-card featured">
                 <div class="popular-badge">Хит продаж</div>
                 <h3>Макси</h3>
+                <div class="desc">Максимум полезных материалов и развлекательных форматов.</div>
                 <div class="price">1 990 ₽</div>
                 <ul class="features-list">
                     <li>Всё из тарифа «Я сам(а)!»</li>
-                    <li>Чек-лист «ТОП-10 мультфильмов» + YouTube плей-лист</li>
-                    <li>Сборник «10 подвижных игр без реквизита»</li>
-                    <li>Скидка 10% на покупку модуля 2</li>
+                    <li>Чек-лист «ТОП-10 мультфильмов» + готовый YouTube плей-лист</li>
+                    <li>Сборник «10 подвижных игр без реквизита» для дома и улицы</li>
+                    <li>Скидка 10% на покупку следующего модуля</li>
                 </ul>
                 <button class="btn" onclick="proceedToPayment('maxi', 1990)">Выбрать тариф</button>
             </div>
@@ -372,20 +628,42 @@
             <!-- Тариф 3 -->
             <div class="price-card">
                 <h3>С обратной связью</h3>
+                <div class="desc">Личное сопровождение и бережная поддержка от педагога.</div>
                 <div class="price">5 990 ₽</div>
                 <ul class="features-list">
                     <li>Всё из тарифа «Макси»</li>
-                    <li>4 еженедельных персональных разбора (аудио/видео)</li>
-                    <li>Личное видео-поздравление к окончанию</li>
-                    <li>Заморозка проверок до 14 дней</li>
-                    <li>Скидка 15% на модуль 2</li>
+                    <li>4 еженедельных разбора (аудио/видео успехов вашего ребенка)</li>
+                    <li>Личное видео-поздравление к окончанию модуля</li>
+                    <li>Заморозка проверок до 14 дней на случай отпуска или болезни</li>
+                    <li>Скидка 15% на покупку следующего модуля</li>
                 </ul>
                 <button class="btn btn-outline" onclick="proceedToPayment('vip', 5990)">Выбрать тариф</button>
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <div class="section-header">
+            <h2>Частые вопросы родителей</h2>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <h4>Нужно ли мне самому/самой знать английский язык?</h4>
+                <p>Совсем необязательно! Все аудиодорожки озвучены профессионально, а в материалах есть подробные подсказки для родителей. Вы просто включаете аудио и играете вместе.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Что делать, если ребенок не хочет повторять слова?</h4>
+                <p>Это абсолютно нормально для возраста 2–6 лет. Работает пассивное восприятие: ребенок слушает, впитывает интонации и через несколько дней начнет повторять сам в игре.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Как я получу доступ к трекеру после оплаты?</h4>
+                <p>После успешной оплаты система мгновенно перенаправит вас на ваш персональный сайт-трекер, где уже будет указано имя вашего ребенка.</p>
+            </div>
+        </div>
+
         <footer>
-            <p>Первый модуль программы «Английский для малышей». Доступ на сайт module1.khi-knows.ru.</p>
+            <p>Авторская программа по раннему изучению английского языка.</p>
+            <p>Все права защищены.</p>
         </footer>
     </div>
 
@@ -395,7 +673,7 @@
             const ageInput = document.getElementById('childAge').value.trim();
             
             if (!nameInput) {
-                alert('Пожалуйста, введите имя ребенка в поле выше, чтобы настроить для него трекер!');
+                alert('Пожалуйста, введите имя ребенка в поле выше, чтобы мы настроили для него личный кабинет!');
                 document.getElementById('childName').focus();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
@@ -404,15 +682,18 @@
             const childName = encodeURIComponent(nameInput);
             const childAge = ageInput ? encodeURIComponent(ageInput) : '3';
 
+            // Ссылка формируется динамически и передается только в момент оплаты
             const trackerUrl = `https://module1.khi-knows.ru/?name=${childName}&age=${childAge}`;
 
-            console.log(`Тариф: ${tariffName}, Сумма: ${price}`);
-            console.log(`Ссылка на трекер после оплаты: ${trackerUrl}`);
+            console.log(`Выбран тариф: ${tariffName}, Сумма: ${price} ₽`);
+            console.log(`Скрытая ссылка на трекер: ${trackerUrl}`);
 
-            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Сейчас вы перейдете к оплате, после чего откроется персональный трекер для ребенка: module1.khi-knows.ru`);
+            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Сейчас вы будете перенаправлены на сервис оплаты, после чего откроется персональный трекер вашего ребенка.`);
             
-            // В продакшене раскомментируйте и настройте под ваш платежный шлюз:
-            // window.location.href = `https://your-payment-link.ru?price=${price}&success_url=${encodeURIComponent(trackerUrl)}`;
+            // Здесь в дальнейшем будет интеграция со шлюзом оплаты (Продамус / ЮKassa и др.), 
+            // где success_url устанавливается равным trackerUrl.
+            // Пример:
+            // window.location.href = `https://your-payment-gate.ru/pay?amount=${price}&success_url=${encodeURIComponent(trackerUrl)}`;
         }
     </script>
 </body>
