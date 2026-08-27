@@ -7,15 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F4F1EA;          /* Теплый премиальный сливочно-песочный оттенок */
+            --bg-color: #F4F1EA;
             --bg-gradient: linear-gradient(135deg, #F4F1EA 0%, #EBE5D8 100%);
             --card-bg: #FFFFFF;
-            --card-accent-bg: #F7FAF8;    /* Легкий фисташковый подтон для блоков */
             --text-primary: #1E293B;
             --text-secondary: #475569;
-            --accent: #3B7A63;            /* Глубокий благородный хвойно-зеленый (дороже и контрастнее) */
+            --accent: #3B7A63;
             --accent-hover: #2F6350;
-            --accent-light: #E2EFE9;      /* Нежный акцентный светлый тон */
+            --accent-light: #E2EFE9;
             --accent-glow: rgba(59, 122, 99, 0.18);
             --border-color: #D9E2DC;
             --radius-sm: 14px;
@@ -64,13 +63,26 @@
             color: var(--accent);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .logo svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--accent);
+        .logo-img-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-subtle);
+            background: #FFFFFF;
+            flex-shrink: 0;
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .header-badge {
@@ -85,8 +97,33 @@
 
         /* Hero Section */
         .hero {
-            padding: 50px 0 70px;
-            text-align: center;
+            padding: 40px 0 70px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 850px) {
+            .hero-content {
+                align-items: center;
+            }
         }
 
         .badge-pill {
@@ -111,7 +148,7 @@
         }
 
         h1 {
-            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-size: clamp(2.2rem, 4.2vw, 3.4rem);
             font-weight: 800;
             margin-bottom: 22px;
             line-height: 1.2;
@@ -124,10 +161,10 @@
         }
 
         .hero p {
-            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: var(--text-secondary);
-            max-width: 740px;
-            margin: 0 auto 40px;
+            margin-bottom: 35px;
+            max-width: 600px;
         }
 
         .hero-cta {
@@ -149,6 +186,24 @@
             background-color: var(--accent-hover);
             transform: translateY(-3px);
             box-shadow: 0 25px 50px rgba(59, 122, 99, 0.2);
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 4px solid #FFFFFF;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* Section Generic */
@@ -592,21 +647,30 @@
 
     <div class="container">
         <header>
-            <div class="logo">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <a href="#" class="logo">
+                <div class="logo-img-wrapper">
+                    <img src="logo.png" alt="Логотип">
+                </div>
                 <span>Английский для малышей</span>
-            </div>
+            </a>
             <div class="header-badge">Модуль 1 из 5</div>
         </header>
 
         <section class="hero">
-            <div class="badge-pill">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                Методика TPR без экранов и стресса
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge-pill">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        Методика TPR без экранов и стресса
+                    </div>
+                    <h1>Английский для малышей 2–5 лет<br><span>без гаджетов и истерик</span></h1>
+                    <p>Пару минут в день под аудиодорожку прямо во время игры. Никакого давления, зубрежки и порчи зрения перед планшетом — только живой естественный язык.</p>
+                    <a href="#tariffs" class="hero-cta">Выбрать тариф и начать</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="child.jpg" alt="Веселый ребенок в движении">
+                </div>
             </div>
-            <h1>Английский для малышей 2–5 лет<br><span>без гаджетов и истерик</span></h1>
-            <p>Пару минут в день под аудиодорожку прямо во время игры. Никакого давления, зубрежки и порчи зрения перед планшетом — только живой естественный язык.</p>
-            <a href="#tariffs" class="hero-cta">Выбрать тариф и начать</a>
         </section>
 
         <div class="section-header">
