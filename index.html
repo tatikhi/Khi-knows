@@ -937,6 +937,16 @@
     </div>
 
     <script>
+        // Функция для правильного склонения слова "год"
+        function getYearWord(age) {
+            const num = Math.abs(age) % 100;
+            const lastDigit = num % 10;
+            if (num > 10 && num < 20) return 'лет';
+            if (lastDigit > 1 && lastDigit < 5) return 'года';
+            if (lastDigit === 1) return 'год';
+            return 'лет';
+        }
+
         function proceedToPayment(tariffName) {
             const nameInput = document.getElementById('childName').value.trim();
             const ageInput = document.getElementById('childAge').value.trim();
@@ -948,10 +958,11 @@
                 return;
             }
 
-            const childAge = ageInput ? ageInput : '3';
+            const childAge = ageInput ? parseInt(ageInput, 10) : 3;
+            const yearWord = getYearWord(childAge);
             
-            // Формируем текст сообщения для Telegram
-            const message = encodeURIComponent(`Здравствуйте! Хочу приобрести тариф «${tariffName}». Ребенок: ${nameInput}, возраст: ${childAge} лет.`);
+            // Формируем текст сообщения для Telegram с правильным склонением (например: "возраст: 3 года")
+            const message = encodeURIComponent(`Здравствуйте! Хочу приобрести тариф «${tariffName}». Ребенок: ${nameInput}, возраст: ${childAge} ${yearWord}.`);
             
             // Перенаправляем в Telegram на ваш аккаунт
             window.location.href = `https://t.me/tati_khi?text=${message}`;
