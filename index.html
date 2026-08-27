@@ -944,7 +944,7 @@
             const lastTwoDigits = num % 100;
 
             if (lastTwoDigits > 10 && lastTwoDigits < 20) return 'лет';
-            if (lastDigit > 1 && lastDigit < 5) return 'года';
+            if (lastDigit >= 2 && lastDigit <= 4) return 'года';
             if (lastDigit === 1) return 'год';
             return 'лет';
         }
