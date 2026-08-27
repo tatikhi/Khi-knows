@@ -55,6 +55,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .logo {
@@ -93,6 +95,7 @@
             padding: 8px 16px;
             border-radius: 30px;
             border: 1px solid rgba(59, 122, 99, 0.15);
+            text-align: center;
         }
 
         /* Hero Section */
@@ -163,19 +166,31 @@
         .hero p {
             font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: var(--text-secondary);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 850px) {
+            .hero-buttons {
+                justify-content: center;
+            }
         }
 
         .hero-cta {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 18px 40px;
+            padding: 16px 32px;
             background-color: var(--accent);
             color: white;
             border-radius: var(--radius-sm);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             text-decoration: none;
             box-shadow: var(--shadow-card);
@@ -184,8 +199,28 @@
 
         .hero-cta:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 25px 50px rgba(59, 122, 99, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(59, 122, 99, 0.2);
+        }
+
+        .hero-cta-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-sm);
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .hero-cta-outline:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
         }
 
         .hero-image-wrapper {
@@ -346,7 +381,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 22px;
-            margin-bottom: 70px;
+            margin-bottom: 30px;
         }
 
         .module-card {
@@ -382,6 +417,43 @@
         .module-card p {
             font-size: 0.95rem;
             color: var(--text-secondary);
+        }
+
+        .demo-banner {
+            background: var(--accent-light);
+            border: 2px dashed var(--accent);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .demo-banner p {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .demo-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         /* Personalization Block */
@@ -551,7 +623,6 @@
             position: relative;
         }
 
-        /* Галочка для обычных пунктов */
         .features-list li::before {
             content: "";
             position: absolute;
@@ -564,7 +635,6 @@
             background-size: contain;
         }
 
-        /* Знак плюса для дополнений в тарифах Макси и С сопровождением */
         .features-list.plus-list li::before {
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B7A63'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
         }
@@ -659,10 +729,9 @@
                 </div>
                 <span>Английский для малышей</span>
             </a>
-            <div class="header-badge">Модуль 1 из 5</div>
+            <div class="header-badge">Модуль 1 из 5 • Модули можно докупать постепенно</div>
         </header>
 
-        <!-- 1. HERO SECTION -->
         <section class="hero">
             <div class="hero-grid">
                 <div class="hero-content">
@@ -672,7 +741,11 @@
                     </div>
                     <h1>Английский для малышей 2–5 лет<br><span>без гаджетов и истерик</span></h1>
                     <p>Пару минут в день под аудиодорожку прямо во время игры. Никакого давления, зубрежки и порчи зрения перед планшетом — только живой естественный язык.</p>
-                    <a href="#tariffs" class="hero-cta">Выбрать тариф и начать</a>
+                    
+                    <div class="hero-buttons">
+                        <a href="#tariffs" class="hero-cta">Выбрать тариф</a>
+                        <a href="https://demo.khi-knows.ru" target="_blank" class="hero-cta-outline">Смотреть демо-версию</a>
+                    </div>
                 </div>
                 <div class="hero-image-wrapper">
                     <img src="child.jpg" alt="Веселый ребенок в движении">
@@ -680,7 +753,6 @@
             </div>
         </section>
 
-        <!-- 2. BENEFITS / METHOD -->
         <div class="section-header">
             <h2>Почему этот метод безопасен и эффективен?</h2>
             <p>Создано специально для развития малышей с учетом особенностей их нервной системы</p>
@@ -710,7 +782,6 @@
             </div>
         </section>
 
-        <!-- 3. TEACHER SECTION -->
         <section class="teacher-section">
             <div class="teacher-photo">
                 <img src="tati.jpeg" alt="Татьяна — мама, детский педагог и автор курса">
@@ -723,7 +794,6 @@
             </div>
         </section>
 
-        <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
             <h2>Программа Модуля 1</h2>
             <p>4 недели увлекательного погружения в игровую среду</p>
@@ -752,7 +822,13 @@
             </div>
         </section>
 
-        <!-- 5. PERSONALIZATION BOX -->
+        <div class="demo-banner">
+            <p>Хотите посмотреть, как это выглядит изнутри и послушать примеры заданий?</p>
+            <a href="https://demo.khi-knows.ru" target="_blank" class="demo-btn">
+                Открыть интерактивную демо-версию сайта ➔
+            </a>
+        </div>
+
         <div class="personalize-box">
             <h3>
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
@@ -771,14 +847,12 @@
             </div>
         </div>
 
-        <!-- 6. PRICING SECTION -->
         <div class="section-header" id="tariffs">
             <h2>Выберите формат участия</h2>
-            <p>Выберите подходящий тариф и начните увлекательное путешествие</p>
+            <p>Модули можно докупать постепенно по мере прохождения, чтобы снизить финансовую нагрузку</p>
         </div>
 
         <section class="pricing-grid">
-            <!-- Тариф 1 (Только галочки) -->
             <div class="price-card">
                 <h3>Я сам(а)!</h3>
                 <div class="desc">Самостоятельное изучение в удобном темпе для всей семьи.</div>
@@ -792,7 +866,6 @@
                 <button class="btn btn-outline" onclick="proceedToPayment('sam', 990)">Выбрать тариф</button>
             </div>
 
-            <!-- Тариф 2 (Макси: 1-й пункт галочка, остальные с плюсами) -->
             <div class="price-card featured">
                 <div class="popular-badge">Хит продаж</div>
                 <h3>Макси</h3>
@@ -809,7 +882,6 @@
                 <button class="btn" onclick="proceedToPayment('maxi', 1990)">Выбрать тариф</button>
             </div>
 
-            <!-- Тариф 3 (С обратной связью: 1-й пункт галочка, остальные с плюсами) -->
             <div class="price-card">
                 <h3>С обратной связью</h3>
                 <div class="desc">Личное сопровождение и бережная поддержка от педагога.</div>
@@ -827,7 +899,6 @@
             </div>
         </section>
 
-        <!-- 7. FAQ SECTION -->
         <div class="section-header">
             <h2>Частые вопросы родителей</h2>
         </div>
@@ -838,8 +909,8 @@
                 <p>Совсем необязательно! Все аудиодорожки озвучены профессионально, а в материалах есть подробные подсказки. Вы просто включаете аудио и играете.</p>
             </div>
             <div class="faq-item">
-                <h4>Что делать, если ребенок не хочет повторять слова?</h4>
-                <p>Это нормально для возраста 2–5 лет. Работает пассивное восприятие: ребенок слушает, впитывает интонации и через несколько дней начинает повторять сам.</p>
+                <h4>Что делать, если ребенок не сразу начинает повторять слова?</h4>
+                <p>Это абсолютно нормально для возраста 2–5 лет. Ребенок начинает впитывать интонации и естественным образом включаться в процесс через движение в своем собственном темпе.</p>
             </div>
             <div class="faq-item">
                 <h4>Как я получу доступ к трекеру после оплаты?</h4>
