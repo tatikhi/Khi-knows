@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>khi-knows</title>
+    <!-- Фавиконка во вкладке браузера (использует logo.png) -->
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -733,6 +734,7 @@
             <div class="header-badge">Модуль 1 из 5 • Модули можно докупать постепенно</div>
         </header>
 
+        <!-- 1. HERO SECTION -->
         <section class="hero">
             <div class="hero-grid">
                 <div class="hero-content">
@@ -754,6 +756,7 @@
             </div>
         </section>
 
+        <!-- 2. BENEFITS / METHOD -->
         <div class="section-header">
             <h2>Почему этот метод безопасен и эффективен?</h2>
             <p>Создано специально для развития малышей с учетом особенностей их нервной системы</p>
@@ -783,6 +786,7 @@
             </div>
         </section>
 
+        <!-- 3. TEACHER SECTION -->
         <section class="teacher-section">
             <div class="teacher-photo">
                 <img src="tati.jpeg" alt="Татьяна — мама, детский педагог и автор курса">
@@ -795,6 +799,7 @@
             </div>
         </section>
 
+        <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
             <h2>Программа Модуля 1</h2>
             <p>4 недели увлекательного погружения в игровую среду</p>
@@ -830,6 +835,7 @@
             </a>
         </div>
 
+        <!-- 5. PERSONALIZATION BOX -->
         <div class="personalize-box">
             <h3>
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
@@ -848,12 +854,14 @@
             </div>
         </div>
 
+        <!-- 6. PRICING SECTION -->
         <div class="section-header" id="tariffs">
             <h2>Выберите формат участия</h2>
             <p>Модули можно докупать постепенно по мере прохождения, чтобы снизить финансовую нагрузку</p>
         </div>
 
         <section class="pricing-grid">
+            <!-- Тариф 1 -->
             <div class="price-card">
                 <h3>Я сам(а)!</h3>
                 <div class="desc">Самостоятельное изучение в удобном темпе для всей семьи.</div>
@@ -864,9 +872,10 @@
                     <li>Именной сертификат об окончании</li>
                     <li>Удобная памятка для родителей</li>
                 </ul>
-                <button class="btn btn-outline" onclick="proceedToPayment('sam', 990)">Выбрать тариф</button>
+                <button class="btn btn-outline" onclick="proceedToPayment('Я сам(а)! (990 ₽)')">Выбрать тариф</button>
             </div>
 
+            <!-- Тариф 2 -->
             <div class="price-card featured">
                 <div class="popular-badge">Хит продаж</div>
                 <h3>Макси</h3>
@@ -880,9 +889,10 @@
                     <li>Сборник «10 подвижных игр без реквизита»</li>
                     <li>Скидка 10% на следующий модуль</li>
                 </ul>
-                <button class="btn" onclick="proceedToPayment('maxi', 1990)">Выбрать тариф</button>
+                <button class="btn" onclick="proceedToPayment('Макси (1 990 ₽)')">Выбрать тариф</button>
             </div>
 
+            <!-- Тариф 3 -->
             <div class="price-card">
                 <h3>С обратной связью</h3>
                 <div class="desc">Личное сопровождение и бережная поддержка от педагога.</div>
@@ -896,10 +906,11 @@
                     <li>Заморозка проверок до 14 дней</li>
                     <li>Скидка 15% на следующий модуль</li>
                 </ul>
-                <button class="btn btn-outline" onclick="proceedToPayment('vip', 5990)">Выбрать тариф</button>
+                <button class="btn btn-outline" onclick="proceedToPayment('С обратной связью (5 990 ₽)')">Выбрать тариф</button>
             </div>
         </section>
 
+        <!-- 7. FAQ SECTION -->
         <div class="section-header">
             <h2>Частые вопросы родителей</h2>
         </div>
@@ -915,7 +926,7 @@
             </div>
             <div class="faq-item">
                 <h4>Как я получу доступ к трекеру после оплаты?</h4>
-                <p>После оплаты система мгновенно сформирует индивидуальную ссылку для вашего малыша с его именем.</p>
+                <p>После оплаты вы получите индивидуальную ссылку для вашего малыша с его именем.</p>
             </div>
         </div>
 
@@ -926,26 +937,24 @@
     </div>
 
     <script>
-        function proceedToPayment(tariffName, price) {
+        function proceedToPayment(tariffName) {
             const nameInput = document.getElementById('childName').value.trim();
             const ageInput = document.getElementById('childAge').value.trim();
             
             if (!nameInput) {
-                alert('Пожалуйста, введите имя ребенка выше, чтобы индивидуальная ссылка сформировалась корректно!');
+                alert('Пожалуйста, введите имя ребенка выше, чтобы мы знали, для кого создавать трекер!');
                 document.getElementById('childName').focus();
                 window.scrollTo({ top: document.querySelector('.personalize-box').offsetTop - 40, behavior: 'smooth' });
                 return;
             }
 
-            const childName = encodeURIComponent(nameInput);
-            const childAge = ageInput ? encodeURIComponent(ageInput) : '3';
-
-            const trackerUrl = `https://module1.khi-knows.ru/?name=${childName}&age=${childAge}`;
-
-            console.log(`Тариф: ${tariffName}, Сумма: ${price} ₽`);
-            console.log(`Индивидуальная ссылка на трекер: ${trackerUrl}`);
-
-            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Перенаправляем на оплату, после чего откроется индивидуальный трекер для вашего малыша.`);
+            const childAge = ageInput ? ageInput : '3';
+            
+            // Формируем текст сообщения для Telegram
+            const message = encodeURIComponent(`Здравствуйте! Хочу приобрести тариф «${tariffName}». Ребенок: ${nameInput}, возраст: ${childAge} лет.`);
+            
+            // Перенаправляем в Telegram на ваш аккаунт
+            window.location.href = `https://t.me/tati_khi?text=${message}`;
         }
     </script>
 </body>
