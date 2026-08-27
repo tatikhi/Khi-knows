@@ -937,11 +937,13 @@
     </div>
 
     <script>
-        // Функция для правильного склонения слова "год"
+        // Функция для корректного склонения слова "год" (1 год, 2-4 года, 5+ лет)
         function getYearWord(age) {
-            const num = Math.abs(age) % 100;
+            const num = Math.abs(age);
             const lastDigit = num % 10;
-            if (num > 10 && num < 20) return 'лет';
+            const lastTwoDigits = num % 100;
+
+            if (lastTwoDigits > 10 && lastTwoDigits < 20) return 'лет';
             if (lastDigit > 1 && lastDigit < 5) return 'года';
             if (lastDigit === 1) return 'год';
             return 'лет';
@@ -962,7 +964,7 @@
             const childAge = ageInput !== '' ? parseInt(ageInput, 10) : 3;
             const yearWord = getYearWord(childAge);
             
-            // Формируем текст сообщения для Telegram с правильным склонением (например: 1 год, 2 года, 5 лет)
+            // Формируем текст сообщения для Telegram с правильным склонением
             const message = encodeURIComponent(`Здравствуйте! Хочу приобрести тариф «${tariffName}». Ребенок: ${nameInput}, возраст: ${childAge} ${yearWord}.`);
             
             // Перенаправляем в Telegram на ваш аккаунт
