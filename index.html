@@ -239,21 +239,21 @@
         }
 
         .teacher-photo {
-            width: 100%;
-            height: 320px;
-            background: var(--accent-light);
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
             border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--accent-light);
+            box-shadow: var(--shadow-subtle);
         }
 
-        .teacher-photo svg {
-            width: 80px;
-            height: 80px;
-            fill: var(--accent);
+        .teacher-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .teacher-content h3 {
@@ -625,7 +625,7 @@
         <!-- 3. TEACHER SECTION -->
         <section class="teacher-section">
             <div class="teacher-photo">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <img src="tati.jpg" alt="Татьяна — детский педагог, автор курса">
             </div>
             <div class="teacher-content">
                 <h3>Приветствую вас! Меня зовут Татьяна</h3>
@@ -635,10 +635,9 @@
             </div>
         </section>
 
-        <!-- 4. PROGRAM / MODULES (По неделям) -->
+        <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
             <h2>Программа Модуля 1</h2>
-практических занятий на каждый день
             <p>4 недели увлекательного погружения в игровую среду</p>
         </div>
 
@@ -665,13 +664,13 @@
             </div>
         </section>
 
-        <!-- 5. PERSONALIZATION BOX (Персонализация ссылки) -->
+        <!-- 5. PERSONALIZATION BOX -->
         <div class="personalize-box">
             <h3>
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-                Персонализация трекера
+                Персонализация ссылки на трекер
             </h3>
-            <p class="subtitle">Укажите имя и возраст ребенка, чтобы после оплаты сформировать индивидуальную ссылку, где на сайте будет отображаться имя малыша.</p>
+            <p class="subtitle">Укажите имя и возраст ребенка, чтобы после оплаты сформировать индивидуальную ссылку для вашего малыша.</p>
             <div class="form-row">
                 <div class="form-group">
                     <label for="childName">Имя ребенка</label>
@@ -752,7 +751,7 @@
             </div>
             <div class="faq-item">
                 <h4>Как я получу доступ к трекеру после оплаты?</h4>
-                <p>После оплаты система мгновенно сформирует персональную ссылку на сайт-трекер с именем вашего ребенка.</p>
+                <p>После оплаты система мгновенно сформирует индивидуальную ссылку для вашего малыша с его именем.</p>
             </div>
         </div>
 
@@ -768,7 +767,7 @@
             const ageInput = document.getElementById('childAge').value.trim();
             
             if (!nameInput) {
-                alert('Пожалуйста, введите имя ребенка выше, чтобы персональная ссылка сгенерировалась корректно!');
+                alert('Пожалуйста, введите имя ребенка выше, чтобы индивидуальная ссылка сформировалась корректно!');
                 document.getElementById('childName').focus();
                 window.scrollTo({ top: document.querySelector('.personalize-box').offsetTop - 40, behavior: 'smooth' });
                 return;
@@ -780,9 +779,9 @@
             const trackerUrl = `https://module1.khi-knows.ru/?name=${childName}&age=${childAge}`;
 
             console.log(`Тариф: ${tariffName}, Сумма: ${price} ₽`);
-            console.log(`Персональная ссылка на трекер: ${trackerUrl}`);
+            console.log(`Индивидуальная ссылка на трекер: ${trackerUrl}`);
 
-            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Перенаправляем на оплату, после чего откроется персональный трекер с именем вашего ребенка.`);
+            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Перенаправляем на оплату, после чего откроется индивидуальный трекер для вашего малыша.`);
             
             // Интеграция с платежным шлюзом (например, Продамус):
             // window.location.href = `https://your-payment-gate.ru/pay?amount=${price}&success_url=${encodeURIComponent(trackerUrl)}`;
