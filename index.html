@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Английский для малышей 2–6 лет | Плавная методика TPR</title>
+    <title>Английский для малышей 2–5 лет | Метод TPR без экранов</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F8F6F0;
+            --bg-color: #F4F1EA;
+            --bg-gradient: linear-gradient(135deg, #F4F1EA 0%, #EBE5D8 100%);
             --card-bg: #FFFFFF;
-            --text-primary: #2D3748;
-            --text-secondary: #4A5568;
-            --accent: #4A8B75;
-            --accent-hover: #3A715F;
-            --accent-light: #E8F2EE;
-            --accent-glow: rgba(74, 139, 117, 0.15);
-            --border-color: #E2E8F0;
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 28px;
-            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.04);
-            --shadow-card: 0 20px 40px rgba(74, 139, 117, 0.08);
+            --text-primary: #1E293B;
+            --text-secondary: #475569;
+            --accent: #3B7A63;
+            --accent-hover: #2F6350;
+            --accent-light: #E2EFE9;
+            --accent-glow: rgba(59, 122, 99, 0.18);
+            --border-color: #D9E2DC;
+            --radius-sm: 14px;
+            --radius-md: 22px;
+            --radius-lg: 30px;
+            --shadow-subtle: 0 12px 35px rgba(30, 41, 59, 0.05);
+            --shadow-card: 0 22px 45px rgba(59, 122, 99, 0.1);
         }
 
         * {
@@ -29,23 +30,28 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Plus Jakarta Sans', sans-serif, -apple-system;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            padding: 24px 0;
+            padding: 28px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,17 +59,30 @@
 
         .logo {
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: var(--accent);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 16px;
+            text-decoration: none;
         }
 
-        .logo svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--accent);
+        .logo-img-wrapper {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-subtle);
+            background: #FFFFFF;
+            flex-shrink: 0;
+        }
+
+        .logo-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .header-badge {
@@ -71,14 +90,40 @@
             font-weight: 600;
             color: var(--accent);
             background: var(--accent-light);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 30px;
+            border: 1px solid rgba(59, 122, 99, 0.15);
         }
 
         /* Hero Section */
         .hero {
-            padding: 40px 0 60px;
-            text-align: center;
+            padding: 40px 0 70px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 850px) {
+            .hero-content {
+                align-items: center;
+            }
         }
 
         .badge-pill {
@@ -87,11 +132,13 @@
             gap: 8px;
             background-color: var(--accent-light);
             color: var(--accent);
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 24px;
+            border: 1px solid rgba(59, 122, 99, 0.15);
+            box-shadow: var(--shadow-subtle);
         }
 
         .badge-pill svg {
@@ -101,11 +148,11 @@
         }
 
         h1 {
-            font-size: clamp(2rem, 4.5vw, 3.4rem);
+            font-size: clamp(2.2rem, 4.2vw, 3.4rem);
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             line-height: 1.2;
-            color: #1A202C;
+            color: #0F172A;
         }
 
         h1 span {
@@ -114,154 +161,123 @@
         }
 
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: var(--text-secondary);
-            max-width: 740px;
-            margin: 0 auto 40px;
+            margin-bottom: 35px;
+            max-width: 600px;
         }
 
-        /* Personalization Block */
-        .personalize-box {
-            background: var(--card-bg);
-            border: 2px solid var(--accent-light);
-            border-radius: var(--radius-md);
-            padding: 32px;
-            max-width: 640px;
-            margin: 0 auto 60px;
-            box-shadow: var(--shadow-card);
-            text-align: left;
-        }
-
-        .personalize-box h3 {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-            display: flex;
+        .hero-cta {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .personalize-box h3 svg {
-            width: 22px;
-            height: 22px;
-            fill: var(--accent);
-        }
-
-        .personalize-box p.subtitle {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 130px;
-            gap: 16px;
-        }
-
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-
-        .form-group input {
-            padding: 14px 18px;
-            border: 1px solid var(--border-color);
+            justify-content: center;
+            padding: 18px 40px;
+            background-color: var(--accent);
+            color: white;
             border-radius: var(--radius-sm);
-            font-family: inherit;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.2s ease;
-            background: #FAFAFA;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-card);
+            transition: all 0.25s ease;
         }
 
-        .form-group input:focus {
-            border-color: var(--accent);
-            background: #FFFFFF;
-            box-shadow: 0 0 0 4px var(--accent-glow);
+        .hero-cta:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px rgba(59, 122, 99, 0.2);
         }
 
-        /* About / Method Section */
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 4px solid #FFFFFF;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Section Generic */
         .section-header {
             text-align: center;
             margin-bottom: 50px;
+            margin-top: 50px;
         }
 
         .section-header h2 {
-            font-size: clamp(1.8vw, 2.5rem, 2.4rem);
+            font-size: clamp(1.9rem, 2.5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 12px;
-            color: #1A202C;
+            color: #0F172A;
         }
 
         .section-header p {
             color: var(--text-secondary);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             max-width: 650px;
             margin: 0 auto;
         }
 
+        /* Features / Method Section */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
         }
 
         .feature-card {
             background: var(--card-bg);
-            padding: 36px 30px;
+            padding: 40px 32px;
             border-radius: var(--radius-md);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-subtle);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-card);
+            border-color: rgba(59, 122, 99, 0.3);
         }
 
         .icon-box {
-            width: 54px;
-            height: 54px;
+            width: 60px;
+            height: 60px;
             background: var(--accent-light);
             border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
 
         .icon-box svg {
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
             fill: var(--accent);
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 12px;
-            color: var(--text-primary);
+            color: #0F172A;
+            font-weight: 700;
         }
 
         .feature-card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Teacher Bio Section */
@@ -270,7 +286,7 @@
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
             padding: 50px;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             display: grid;
             grid-template-columns: 280px 1fr;
             gap: 40px;
@@ -282,47 +298,164 @@
             .teacher-section {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding: 35px 20px;
+                padding: 40px 24px;
             }
         }
 
         .teacher-photo {
-            width: 100%;
-            height: 320px;
-            background: #E2E8F0;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
             border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
+            border: 3px solid var(--accent-light);
+            box-shadow: var(--shadow-card);
         }
 
-        .teacher-photo svg {
-            width: 80px;
-            height: 80px;
-            fill: #CBD5E0;
+        .teacher-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .teacher-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            color: #1A202C;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #0F172A;
         }
 
         .teacher-role {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             display: block;
         }
 
         .teacher-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+            line-height: 1.7;
+        }
+
+        /* Program / Modules Section */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+            margin-bottom: 70px;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .module-card span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .module-card h4 {
+            font-size: 1.2rem;
+            color: #0F172A;
+            margin-bottom: 10px;
+        }
+
+        .module-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Personalization Block */
+        .personalize-box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-lg);
+            padding: 45px;
+            max-width: 740px;
+            margin: 0 auto 70px;
+            box-shadow: var(--shadow-card);
+            text-align: left;
+        }
+
+        .personalize-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .personalize-box h3 svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent);
+        }
+
+        .personalize-box p.subtitle {
             font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 16px;
-            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 150px;
+            gap: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input {
+            padding: 16px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1.05rem;
+            outline: none;
+            transition: all 0.25s ease;
+            background: #FAFAFA;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px var(--accent-glow);
         }
 
         /* Pricing Section */
@@ -330,7 +463,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
             align-items: stretch;
         }
 
@@ -338,7 +471,7 @@
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 40px 32px;
+            padding: 45px 35px;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -350,6 +483,7 @@
             border: 2px solid var(--accent);
             box-shadow: var(--shadow-card);
             transform: scale(1.02);
+            background: #FFFFFF;
         }
 
         @media (max-width: 900px) {
@@ -365,74 +499,74 @@
             transform: translateX(-50%);
             background: var(--accent);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
-            letter-spacing: 0.8px;
-            box-shadow: 0 4px 12px rgba(74, 139, 117, 0.3);
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(59, 122, 99, 0.3);
         }
 
         .price-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 12px;
-            color: #1A202C;
+            color: #0F172A;
         }
 
         .price-card .desc {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 24px;
-            min-height: 40px;
+            margin-bottom: 28px;
+            min-height: 45px;
         }
 
         .price {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--accent);
-            margin-bottom: 28px;
+            margin-bottom: 30px;
             display: flex;
             align-items: baseline;
-            gap: 4px;
+            gap: 6px;
         }
 
         .price span {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 500;
             color: var(--text-secondary);
         }
 
         .features-list {
             list-style: none;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             flex-grow: 1;
         }
 
         .features-list li {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 14px;
-            padding-left: 28px;
+            margin-bottom: 16px;
+            padding-left: 30px;
             position: relative;
         }
 
-        /* Стандартный чекмарк для первого тарифа и первого пункта повышенных тарифов */
+        /* Галочка для обычных пунктов */
         .features-list li::before {
             content: "";
             position: absolute;
             left: 0;
             top: 4px;
-            width: 18px;
-            height: 18px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234A8B75'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B7A63'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-size: contain;
         }
 
-        /* Для тарифов Макси и С обратной связью пункты со 2-го и далее получают знак плюс */
-        .features-list.plus-bullets li:nth-child(n+2)::before {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234A8B75'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
+        /* Знак плюса для дополнений в тарифах Макси и С сопровождением */
+        .features-list.plus-list li::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233B7A63'%3E%3Cpath d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E");
         }
 
         .btn {
@@ -441,21 +575,22 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             background-color: var(--accent);
             color: white;
             border: none;
             border-radius: var(--radius-sm);
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            transition: all 0.25s ease;
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
         .btn:active {
@@ -475,37 +610,38 @@
         /* FAQ Section */
         .faq-container {
             max-width: 800px;
-            margin: 0 auto 80px;
+            margin: 0 auto 70px;
         }
 
         .faq-item {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-sm);
-            margin-bottom: 16px;
-            padding: 24px;
+            margin-bottom: 18px;
+            padding: 28px;
             box-shadow: var(--shadow-subtle);
         }
 
         .faq-item h4 {
-            font-size: 1.1rem;
-            color: #1A202C;
-            margin-bottom: 8px;
+            font-size: 1.15rem;
+            color: #0F172A;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .faq-item p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 50px 0;
+            padding: 60px 0;
             border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         footer p {
@@ -517,45 +653,37 @@
 
     <div class="container">
         <header>
-            <div class="logo">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <a href="#" class="logo">
+                <div class="logo-img-wrapper">
+                    <img src="logo.png" alt="Логотип">
+                </div>
                 <span>Английский для малышей</span>
-            </div>
+            </a>
             <div class="header-badge">Модуль 1 из 5</div>
         </header>
 
+        <!-- 1. HERO SECTION -->
         <section class="hero">
-            <div class="badge-pill">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                Методика TPR без экранов и стресса
-            </div>
-            <h1>Плавный старт в английский язык<br><span>для детей 2–6 лет</span></h1>
-            <p>Всего 3–5 минут в день активных игр под аудиодорожку вместе с вами. Забудьте про скучные учебники, усаживания за парту и гаджеты — только естественное погружение через движение и улыбки.</p>
-            
-            <!-- Personalization Block -->
-            <div class="personalize-box">
-                <h3>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-                    Настроим персональный интерактивный трекер
-                </h3>
-                <p class="subtitle">Введите имя и возраст ребенка, чтобы после оплаты сразу активировать его личный кабинет.</p>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="childName">Имя ребенка</label>
-                        <input type="text" id="childName" placeholder="например, Машенька" required>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="badge-pill">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                        Методика TPR без экранов и стресса
                     </div>
-                    <div class="form-group">
-                        <label for="childAge">Возраст</label>
-                        <input type="number" id="childAge" placeholder="3" min="1" max="10" required>
-                    </div>
+                    <h1>Английский для малышей 2–5 лет<br><span>без гаджетов и истерик</span></h1>
+                    <p>Пару минут в день под аудиодорожку прямо во время игры. Никакого давления, зубрежки и порчи зрения перед планшетом — только живой естественный язык.</p>
+                    <a href="#tariffs" class="hero-cta">Выбрать тариф и начать</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="child.jpg" alt="Веселый ребенок в движении">
                 </div>
             </div>
         </section>
 
-        <!-- Features / Benefits -->
+        <!-- 2. BENEFITS / METHOD -->
         <div class="section-header">
-            <h2>Почему малыши влюбляются в этот английский?</h2>
-            <p>Программа создана с учетом особенностей развития детей от 2 до 6 лет</p>
+            <h2>Почему этот метод безопасен и эффективен?</h2>
+            <p>Создано специально для развития малышей с учетом особенностей их нервной системы</p>
         </div>
 
         <section class="features-grid">
@@ -564,90 +692,142 @@
                     <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
                 </div>
                 <h3>Аудиоформат без экранов</h3>
-                <p>Ребенок не портит зрение перед монитором. Он слушает живой голос педагога, двигается и играет в реальном пространстве.</p>
+                <p>Ребенок слушает живой голос и играет в реальном пространстве. Никакой нагрузки на глазки и нервную систему от планшетов.</p>
             </div>
             <div class="feature-card">
                 <div class="icon-box">
                     <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.47 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                 </div>
                 <h3>Всего 3–5 минут в день</h3>
-                <p>Идеальный интервал для удержания внимания малыша. Никаких слез, капризов и утомительных часовых занятий.</p>
+                <p>Идеально для удержания внимания ребенка. Без слез, капризов, долгих усаживаний за парту и чувства вины.</p>
             </div>
             <div class="feature-card">
                 <div class="icon-box">
                     <svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 13.43 12 12 13.43 13.43 17 12 18.43 13.43 19.86 17 16.29l3.57 3.57 1.43-1.43L18.43 17l2.14-2.14zM11 4C9.34 4 8 5.34 8 7s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
                 </div>
-                <h3>Методика TPR (Total Physical Response)</h3>
-                <p>Запоминание слов происходит через тело, жесты и эмоции. Ребенок «проживает» язык естественным путем, как родной.</p>
+                <h3>Метод TPR (Total Physical Response)</h3>
+                <p>Слова запоминаются через тело и движение. Ребенок слышит команду, выполняет действие и впитывает язык как родной.</p>
             </div>
         </section>
 
-        <!-- Teacher Section -->
+        <!-- 3. TEACHER SECTION -->
         <section class="teacher-section">
             <div class="teacher-photo">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <img src="tati.jpeg" alt="Татьяна — мама, детский педагог и автор курса">
             </div>
             <div class="teacher-content">
-                <h3>Приветствую вас! Меня зовут [Ваше Имя]</h3>
-                <span class="teacher-role">Детский педагог-лингвист, автор методики</span>
-                <p>Я помогаю мамам, папам, бабушкам и дедушкам мягко и бережно познакомить малышей с английским языком с самого раннего возраста.</p>
-                <p>Моя цель — сделать так, чтобы английский не был для ребенка стрессом или школьной обязанностью. Это веселая игра, в которой участвует вся семья!</p>
+                <h3>Приветствую вас! Меня зовут Татьяна</h3>
+                <span class="teacher-role">Мама, детский педагог и автор курса</span>
+                <p>Я помогаю знакомить малышей с английским языком с самого раннего возраста без стресса и выгорания.</p>
+                <p>Моя цель — сделать так, чтобы английский был не скучной школьной обязанностью, а веселой игрой для ребенка.</p>
             </div>
         </section>
 
-        <!-- Pricing Section -->
+        <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
-            <h2>Выберите формат участия в Модуле 1</h2>
-            <p>Выберите подходящий тариф и начните увлекательное путешествие в мир английского</p>
+            <h2>Программа Модуля 1</h2>
+            <p>4 недели увлекательного погружения в игровую среду</p>
+        </div>
+
+        <section class="modules-grid">
+            <div class="module-card">
+                <span>Неделя 1</span>
+                <h4>Цвета</h4>
+                <p>Знакомимся с базовыми цветами через окружающие предметы и простые игровые действия.</p>
+            </div>
+            <div class="module-card">
+                <span>Неделя 2</span>
+                <h4>Базовые движения</h4>
+                <p>Включаем моторную память: учимся реагировать на команды и двигаться под аудио.</p>
+            </div>
+            <div class="module-card">
+                <span>Неделя 3</span>
+                <h4>Части тела</h4>
+                <p>Изучаем себя в игровой форме: находим и показываем ручки, ножки, носик и глазки.</p>
+            </div>
+            <div class="module-card">
+                <span>Неделя 4</span>
+                <h4>Животные</h4>
+                <p>Осваиваем лексику через подражание звукам и движениям любимых зверей.</p>
+            </div>
+        </section>
+
+        <!-- 5. PERSONALIZATION BOX -->
+        <div class="personalize-box">
+            <h3>
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                Персонализация ссылки на трекер
+            </h3>
+            <p class="subtitle">Укажите имя и возраст ребенка, чтобы после оплаты сформировать индивидуальную ссылку для вашего малыша.</p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="childName">Имя ребенка</label>
+                    <input type="text" id="childName" placeholder="например, Машенька" required>
+                </div>
+                <div class="form-group">
+                    <label for="childAge">Возраст</label>
+                    <input type="number" id="childAge" placeholder="3" min="1" max="10" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. PRICING SECTION -->
+        <div class="section-header" id="tariffs">
+            <h2>Выберите формат участия</h2>
+            <p>Выберите подходящий тариф и начните увлекательное путешествие</p>
         </div>
 
         <section class="pricing-grid">
-            <!-- Тариф 1 -->
+            <!-- Тариф 1 (Только галочки) -->
             <div class="price-card">
                 <h3>Я сам(а)!</h3>
                 <div class="desc">Самостоятельное изучение в удобном темпе для всей семьи.</div>
                 <div class="price">990 ₽</div>
                 <ul class="features-list">
-                    <li>Бессрочный доступ к персональному сайту-трекеру (Модуль 1)</li>
-                    <li>Интерактивная игра «Мемори» + фирменная раскраска</li>
-                    <li>Именной Сертификат об окончании модуля</li>
+                    <li>Бессрочный доступ к сайту-трекеру (Модуль 1)</li>
+                    <li>Интерактивная игра «Мемори» + раскраска</li>
+                    <li>Именной сертификат об окончании</li>
                     <li>Удобная памятка для родителей</li>
                 </ul>
                 <button class="btn btn-outline" onclick="proceedToPayment('sam', 990)">Выбрать тариф</button>
             </div>
 
-            <!-- Тариф 2 -->
+            <!-- Тариф 2 (Макси: 1-й пункт галочка, остальные с плюсами) -->
             <div class="price-card featured">
                 <div class="popular-badge">Хит продаж</div>
                 <h3>Макси</h3>
                 <div class="desc">Максимум полезных материалов и развлекательных форматов.</div>
                 <div class="price">1 990 ₽</div>
-                <ul class="features-list plus-bullets">
+                <ul class="features-list">
                     <li>Всё из тарифа «Я сам(а)!»</li>
-                    <li>Чек-лист «ТОП-10 мультфильмов» + готовый YouTube плей-лист</li>
-                    <li>Сборник «10 подвижных игр без реквизита» для дома и улицы</li>
-                    <li>Скидка 10% на покупку следующего модуля</li>
+                </ul>
+                <ul class="features-list plus-list">
+                    <li>Чек-лист «ТОП-10 мультфильмов» + плей-лист</li>
+                    <li>Сборник «10 подвижных игр без реквизита»</li>
+                    <li>Скидка 10% на следующий модуль</li>
                 </ul>
                 <button class="btn" onclick="proceedToPayment('maxi', 1990)">Выбрать тариф</button>
             </div>
 
-            <!-- Тариф 3 -->
+            <!-- Тариф 3 (С обратной связью: 1-й пункт галочка, остальные с плюсами) -->
             <div class="price-card">
                 <h3>С обратной связью</h3>
                 <div class="desc">Личное сопровождение и бережная поддержка от педагога.</div>
                 <div class="price">5 990 ₽</div>
-                <ul class="features-list plus-bullets">
+                <ul class="features-list">
                     <li>Всё из тарифа «Макси»</li>
-                    <li>4 еженедельных разбора (аудио/видео успехов вашего ребенка)</li>
-                    <li>Личное видео-поздравление к окончанию модуля</li>
-                    <li>Заморозка проверок до 14 дней на случай отпуска или болезни</li>
-                    <li>Скидка 15% на покупку следующего модуля</li>
+                </ul>
+                <ul class="features-list plus-list">
+                    <li>4 еженедельных разбора (аудио/видео успехов)</li>
+                    <li>Личное видео-поздравление от автора</li>
+                    <li>Заморозка проверок до 14 дней</li>
+                    <li>Скидка 15% на следующий модуль</li>
                 </ul>
                 <button class="btn btn-outline" onclick="proceedToPayment('vip', 5990)">Выбрать тариф</button>
             </div>
         </section>
 
-        <!-- FAQ Section -->
+        <!-- 7. FAQ SECTION -->
         <div class="section-header">
             <h2>Частые вопросы родителей</h2>
         </div>
@@ -655,15 +835,15 @@
         <div class="faq-container">
             <div class="faq-item">
                 <h4>Нужно ли мне самому/самой знать английский язык?</h4>
-                <p>Совсем необязательно! Все аудиодорожки озвучены профессионально, а в материалах есть подробные подсказки для родителей. Вы просто включаете аудио и играете вместе.</p>
+                <p>Совсем необязательно! Все аудиодорожки озвучены профессионально, а в материалах есть подробные подсказки. Вы просто включаете аудио и играете.</p>
             </div>
             <div class="faq-item">
                 <h4>Что делать, если ребенок не хочет повторять слова?</h4>
-                <p>Это абсолютно нормально для возраста 2–6 лет. Работает пассивное восприятие: ребенок слушает, впитывает интонации и через несколько дней начнет повторять сам в игре.</p>
+                <p>Это нормально для возраста 2–5 лет. Работает пассивное восприятие: ребенок слушает, впитывает интонации и через несколько дней начинает повторять сам.</p>
             </div>
             <div class="faq-item">
                 <h4>Как я получу доступ к трекеру после оплаты?</h4>
-                <p>После успешной оплаты система мгновенно перенаправит вас на ваш персональный сайт-трекер, где уже будет указано имя вашего ребенка.</p>
+                <p>После оплаты система мгновенно сформирует индивидуальную ссылку для вашего малыша с его именем.</p>
             </div>
         </div>
 
@@ -679,9 +859,9 @@
             const ageInput = document.getElementById('childAge').value.trim();
             
             if (!nameInput) {
-                alert('Пожалуйста, введите имя ребенка в поле выше, чтобы мы настроили для него личный кабинет!');
+                alert('Пожалуйста, введите имя ребенка выше, чтобы индивидуальная ссылка сформировалась корректно!');
                 document.getElementById('childName').focus();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: document.querySelector('.personalize-box').offsetTop - 40, behavior: 'smooth' });
                 return;
             }
 
@@ -690,12 +870,10 @@
 
             const trackerUrl = `https://module1.khi-knows.ru/?name=${childName}&age=${childAge}`;
 
-            console.log(`Выбран тариф: ${tariffName}, Сумма: ${price} ₽`);
-            console.log(`Скрытая ссылка на трекер: ${trackerUrl}`);
+            console.log(`Тариф: ${tariffName}, Сумма: ${price} ₽`);
+            console.log(`Индивидуальная ссылка на трекер: ${trackerUrl}`);
 
-            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Сейчас вы будете перенаправлены на сервис оплаты, после чего откроется персональный трекер вашего ребенка.`);
-            
-            // window.location.href = `https://your-payment-gate.ru/pay?amount=${price}&success_url=${encodeURIComponent(trackerUrl)}`;
+            alert(`Спасибо! Вы выбрали тариф за ${price} ₽. Перенаправляем на оплату, после чего откроется индивидуальный трекер для вашего малыша.`);
         }
     </script>
 </body>
