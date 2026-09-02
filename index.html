@@ -534,7 +534,6 @@
 
         .material-box {
             background: linear-gradient(145deg, #ffffff, #f9f9f9);
-            border: 2px dashed var(--border-color);
             border-radius: 18px; 
             aspect-ratio: 1 / 1; 
             display: flex;
@@ -545,16 +544,27 @@
             transition: all 0.3s ease;
             padding: 12px;
             text-align: center;
-            color: var(--text-secondary);
+            color: var(--accent);
             text-decoration: none;
             cursor: pointer;
         }
 
-        .material-box:hover {
-            border-color: var(--accent);
-            border-style: solid;
+        /* Активная карточка со сплошной зеленой рамкой */
+        .material-box.active-file {
+            border: 2px solid var(--accent);
+        }
+
+        /* Неактивная карточка с пунктирной рамкой */
+        .material-box.empty-file {
+            border: 2px dashed var(--border-color);
+            color: var(--text-secondary);
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .material-box.active-file:hover {
+            background: #FFFFFF;
             box-shadow: var(--shadow-card);
-            color: var(--accent);
             transform: translateY(-4px);
         }
         
@@ -563,7 +573,6 @@
             height: 28px;
             fill: currentColor;
             margin-bottom: 10px;
-            opacity: 0.7;
         }
 
         .material-box span {
@@ -733,7 +742,7 @@
         <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
             <h2>Программа трекера</h2>
-            <p>Увлекательное погружение в игровую среду, которое вы можете начать уже сегодня</p>
+            <p>У увлекательное погружение в игровую среду, которое вы можете начать уже сегодня</p>
         </div>
 
         <section class="modules-grid">
@@ -778,23 +787,23 @@
         </div>
 
         <div id="materialsContent" class="materials-grid">
-            <!-- Материал 1: Чек-лист игр (скачивание minigame.pdf) -->
-            <a href="minigame.pdf" download="minigame.pdf" class="material-box">
+            <!-- Активный материал 1 (Сплошная зеленая рамка) -->
+            <div onclick="downloadFile('minigame.pdf', 'minigame.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Чек-лист из 5 быстрых игр на английском</span>
-            </a>
-            <!-- Материал 2: Мультфильмы (скачивание cartoon.pdf) -->
-            <a href="cartoon.pdf" download="cartoon.pdf" class="material-box">
+            </div>
+            <!-- Активный материал 2 (Сплошная зеленая рамка) -->
+            <div onclick="downloadFile('cartoon.pdf', 'cartoon.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Список полезных мультфильмов на английском для малышей</span>
-            </a>
-            <!-- Свободная пустая плашка 1 -->
-            <div class="material-box" style="border-style: dashed; opacity: 0.7; cursor: default;">
+            </div>
+            <!-- Свободная пустая плашка 1 (Пунктирная рамка) -->
+            <div class="material-box empty-file">
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                 <span>Материал в разработке</span>
             </div>
-            <!-- Свободная пустая плашка 2 -->
-            <div class="material-box" style="border-style: dashed; opacity: 0.7; cursor: default;">
+            <!-- Свободная пустая плашка 2 (Пунктирная рамка) -->
+            <div class="material-box empty-file">
                 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                 <span>Материал в разработке</span>
             </div>
@@ -824,8 +833,8 @@
             <p>Авторская программа по раннему изучению английского языка.</p>
             <p>Все права защищены.</p>
             <div class="legal-links">
-                <a href="politic.pdf" download="politic.pdf">Политика конфиденциальности</a>
-                <a href="soglas.pdf" download="soglas.pdf">Согласие на обработку данных</a>
+                <a onclick="downloadFile('politic.pdf', 'politic.pdf')">Политика конфиденциальности</a>
+                <a onclick="downloadFile('soglas.pdf', 'soglas.pdf')">Согласие на обработку данных</a>
             </div>
         </footer>
     </div>
@@ -842,6 +851,24 @@
                 content.classList.add('active');
                 btn.innerHTML = 'Скрыть материалы ↑';
             }
+        }
+
+        // Принудительное скачивание файла с вызовом диалогового окна сохранение
+        function downloadFile(url, fileName) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(blobUrl);
+                    a.remove();
+                })
+                .catch(() => alert('Ошибка при скачивании файла. Убедитесь, что файл загружен на сервер.'));
         }
     </script>
 </body>
