@@ -398,7 +398,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Чтобы кнопка уходила вниз */
+            justify-content: space-between;
         }
 
         .module-card:hover {
@@ -477,7 +477,6 @@
             opacity: 0.8;
         }
 
-        /* Кнопка внутри карточки Модуля 1 */
         .module-btn {
             display: inline-flex;
             align-items: center;
@@ -548,6 +547,7 @@
             text-align: center;
             color: var(--text-secondary);
             text-decoration: none;
+            cursor: pointer;
         }
 
         .material-box:hover {
@@ -639,6 +639,7 @@
             border-radius: 50px;
             background: var(--card-bg);
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .legal-links a:hover {
@@ -764,7 +765,7 @@
             </div>
         </section>
 
-        <!-- 5. USEFUL MATERIALS (NEW MECHANIC) -->
+        <!-- 5. USEFUL MATERIALS -->
         <div class="section-header">
             <h2>Полезные материалы</h2>
             <p>Дополнительные шпаргалки, чек-листы и списки, которые облегчат маме жизнь</p>
@@ -777,25 +778,15 @@
         </div>
 
         <div id="materialsContent" class="materials-grid">
-            <!-- Материал 1: Чек-лист игр (скачивание файла minigame.pdf) -->
+            <!-- Материал 1: Чек-лист игр (скачивание minigame.pdf) -->
             <a href="minigame.pdf" download="minigame.pdf" class="material-box">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Чек-лист из 5 быстрых игр на английском</span>
             </a>
-            <!-- Материал 2: Мультфильмы (скачивание файла cartoon.pdf) -->
+            <!-- Материал 2: Мультфильмы (скачивание cartoon.pdf) -->
             <a href="cartoon.pdf" download="cartoon.pdf" class="material-box">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Список полезных мультфильмов на английском для малышей</span>
-            </a>
-            <!-- Материал 3: Политика (скачивание файла politic.pdf) -->
-            <a href="politic.pdf" download="politic.pdf" class="material-box">
-                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span>Политика конфиденциальности</span>
-            </a>
-            <!-- Материал 4: Согласие (скачивание файла soglas.pdf) -->
-            <a href="soglas.pdf" download="soglas.pdf" class="material-box">
-                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                <span>Согласие на обработку данных</span>
             </a>
             <!-- Свободная пустая плашка 1 -->
             <div class="material-box" style="border-style: dashed; opacity: 0.7; cursor: default;">
