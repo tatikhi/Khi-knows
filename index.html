@@ -788,12 +788,12 @@
 
         <div id="materialsContent" class="materials-grid">
             <!-- Активный материал 1 -->
-            <div onclick="downloadFile('minigame.pdf', 'Чек-лист из 5 быстрых игр')" class="material-box active-file">
+            <div onclick="downloadFile('minigame.pdf', 'minigame.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Чек-лист из 5 быстрых игр на английском</span>
             </div>
             <!-- Активный материал 2 -->
-            <div onclick="downloadFile('cartoon.pdf', 'Список полезных мультфильмов')" class="material-box active-file">
+            <div onclick="downloadFile('cartoon.pdf', 'cartoon.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Список полезных мультфильмов на английском для малышей</span>
             </div>
@@ -821,7 +821,7 @@
             </div>
             <div class="faq-item">
                 <h4>Что делать, если ребенок не сразу начинает повторять слова?</h4>
-                <p>Это абсолютно нормально для возраста 2–5 лет. Ребенок начинает впитывать интонации и естественным образом включаться в процесс через движение в своем собственного темпе.</p>
+                <p>Это абсолютно нормально для возраста 2–5 лет. Ребенок начинает впитывать интонации и естественным образом включаться в процесс через движение в своем собственном темпе.</p>
             </div>
             <div class="faq-item">
                 <h4>Как я получу доступ к трекеру?</h4>
@@ -833,8 +833,8 @@
             <p>Авторская программа по раннему изучению английского языка.</p>
             <p>Все права защищены.</p>
             <div class="legal-links">
-                <a onclick="downloadFile('politic.pdf', 'Политика конфиденциальности')">Политика конфиденциальности</a>
-                <a onclick="downloadFile('soglas.pdf', 'Согласие на обработку персональных данных')">Согласие на обработку данных</a>
+                <a onclick="downloadFile('politic.pdf', 'politic.pdf')">Политика конфиденциальности</a>
+                <a onclick="downloadFile('soglas.pdf', 'soglas.pdf')">Согласие на обработку данных</a>
             </div>
         </footer>
     </div>
@@ -853,28 +853,29 @@
             }
         }
 
-        // Функция скачивания (аналог функции дня 30 с вызовом отдельного окна)
-        function downloadFile(filePath, title) {
-            const printWindow = window.open('', '_blank');
-            if (printWindow) {
-                printWindow.document.write(`
-                    <!DOCTYPE html>
-                    <html lang="ru">
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>${title}</title>
-                        <style>
-                            body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #FFFFFF; }
-                            iframe { width: 100vw; height: 100vh; border: none; }
-                        </style>
-                    </head>
-                    <body>
-                        <iframe src="${filePath}" onload="window.print();"></iframe>
-                    </body>
-                    </html>
-                `);
-                printWindow.document.close();
-            }
+        // Функция скачивания с прямым сохранением в «Файлы» / «Загрузки»
+        function downloadFile(filePath, fileName) {
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) throw new Error('Файл не найден');
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(url);
+                        a.remove();
+                    }, 1000);
+                })
+                .catch(error => {
+                    alert('Не удалось скачать файл. Проверьте, что файл загружен в корень сайта.');
+                });
         }
     </script>
 </body>
