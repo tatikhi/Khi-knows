@@ -788,12 +788,12 @@
 
         <div id="materialsContent" class="materials-grid">
             <!-- Активный материал 1 -->
-            <a href="minigame.pdf" target="_blank" class="material-box active-file">
+            <a href="minigame.pdf" onclick="downloadFile(event, 'minigame.pdf', 'minigame.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Чек-лист из 5 быстрых игр на английском</span>
             </a>
             <!-- Активный материал 2 -->
-            <a href="cartoon.pdf" target="_blank" class="material-box active-file">
+            <a href="cartoon.pdf" onclick="downloadFile(event, 'cartoon.pdf', 'cartoon.pdf')" class="material-box active-file">
                 <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 <span>Список полезных мультфильмов на английском для малышей</span>
             </a>
@@ -833,8 +833,8 @@
             <p>Авторская программа по раннему изучению английского языка.</p>
             <p>Все права защищены.</p>
             <div class="legal-links">
-                <a href="politic.pdf" target="_blank">Политика конфиденциальности</a>
-                <a href="soglas.pdf" target="_blank">Согласие на обработку данных</a>
+                <a href="politic.pdf" onclick="downloadFile(event, 'politic.pdf', 'politic.pdf')">Политика конфиденциальности</a>
+                <a href="soglas.pdf" onclick="downloadFile(event, 'soglas.pdf', 'soglas.pdf')">Согласие на обработку данных</a>
             </div>
         </footer>
     </div>
@@ -851,6 +851,50 @@
                 content.classList.add('active');
                 btn.innerHTML = 'Скрыть материалы ↑';
             }
+        }
+
+        // Кроссбраузерная функция принудительного скачивания PDF
+        function downloadFile(event, filePath, fileName) {
+            // Останавливаем стандартный переход по ссылке
+            event.preventDefault();
+            
+            fetch(filePath)
+                .then(response => {
+                    if (!response.ok) throw new Error('Сетевая ошибка при загрузке файла');
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Принудительно меняем тип файла на бинарный (octet-stream),
+                    // чтобы встроенные просмотрщики iOS/Safari/Chrome не пытались его открыть.
+                    const forcedBlob = new Blob([blob], { type: 'application/octet-stream' });
+                    const url = window.URL.createObjectURL(forcedBlob);
+                    
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = fileName; // Системное окно сохранения
+                    
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Fetch заблокирован (например, при локальном тесте), открываем напрямую:', error);
+                    // Запасной механизм (fallback): 
+                    // Если скрипт блокируется системой (например, файл открыт просто с компьютера без сервера),
+                    // мы имитируем обычный клик по ссылке с атрибутами download и target=_blank.
+                    const a = document.createElement('a');
+                    a.href = filePath;
+                    a.download = fileName;
+                    a.target = '_blank';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
         }
     </script>
 </body>
