@@ -742,7 +742,7 @@
         <!-- 4. PROGRAM / MODULES -->
         <div class="section-header">
             <h2>Программа трекера</h2>
-            <p>У увлекательное погружение в игровую среду, которое вы можете начать уже сегодня</p>
+            <p>Увлекательное погружение в игровую среду, которое вы можете начать уже сегодня</p>
         </div>
 
         <section class="modules-grid">
@@ -853,22 +853,31 @@
             }
         }
 
-        // Принудительное скачивание файла с вызовом диалогового окна сохранение
-        function downloadFile(url, fileName) {
-            fetch(url)
-                .then(response => response.blob())
-                .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = blobUrl;
-                    a.download = fileName;
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(blobUrl);
+        // Принудительное скачивание файла с вызовом диалогового окна системы
+        async function downloadFile(url, fileName) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Файл не найден');
+                }
+                const blob = await response.blob();
+                const blobUrl = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = blobUrl;
+                a.download = fileName;
+                
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
+                    URL.revokeObjectURL(blobUrl);
                     a.remove();
-                })
-                .catch(() => alert('Ошибка при скачивании файла. Убедитесь, что файл загружен на сервер.'));
+                }, 1000);
+            } catch (error) {
+                alert('Не удалось скачать файл. Пожалуйста, убедитесь, что файлы с верными названиями загружены в корень проекта на GitHub.');
+            }
         }
     </script>
 </body>
