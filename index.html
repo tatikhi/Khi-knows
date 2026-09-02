@@ -398,6 +398,7 @@
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            justify-content: space-between; /* Чтобы кнопка уходила вниз */
         }
 
         .module-card:hover {
@@ -424,7 +425,7 @@
         .module-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 24px 0;
         }
 
         .module-list li {
@@ -476,6 +477,37 @@
             opacity: 0.8;
         }
 
+        /* Кнопка внутри карточки Модуля 1 */
+        .module-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(59, 122, 99, 0.15);
+            transition: all 0.25s ease;
+            margin-top: auto;
+        }
+
+        .module-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .module-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
         /* Useful Materials Section */
         .materials-toggle-wrapper {
             text-align: center;
@@ -484,7 +516,7 @@
 
         .materials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px;
             margin-bottom: 70px;
             max-height: 0;
@@ -705,33 +737,32 @@
 
         <section class="modules-grid">
             <div class="module-card">
-                <span>Доступен сейчас</span>
-                <h4>Модуль 1: Базовый</h4>
-                <ul class="module-list">
-                    <li><strong>Движение:</strong> учимся реагировать на команды и двигаться под аудио</li>
-                    <li><strong>Части тела:</strong> изучаем себя, находим ручки, ножки, носик и глазки</li>
-                    <li><strong>Животные:</strong> осваиваем лексику через звуки и движения зверей</li>
-                    <li><strong>Цвета:</strong> знакомимся с оттенками через окружающие предметы</li>
-                </ul>
+                <div>
+                    <span>Доступен сейчас</span>
+                    <h4>Модуль 1: Базовый</h4>
+                    <ul class="module-list">
+                        <li><strong>Движение:</strong> учимся реагировать на команды и двигаться под аудио</li>
+                        <li><strong>Части тела:</strong> изучаем себя, находим ручки, ножки, носик и глазки</li>
+                        <li><strong>Животные:</strong> осваиваем лексику через звуки и движения зверей</li>
+                        <li><strong>Цвета:</strong> знакомимся с оттенками через окружающие предметы</li>
+                    </ul>
+                </div>
+                <a href="https://t.me/khi_knows_bot" target="_blank" class="module-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.11-1.79 6.85-2.97 8.22-3.55 3.91-1.67 4.72-1.96 5.25-1.97.12 0 .39.03.56.17.14.12.18.28.2.4-.02.07-.02.13-.04.25z"/></svg>
+                    Получить персональный доступ ➔
+                </a>
             </div>
             <div class="module-card module-empty">
                 <span>Скоро</span>
                 <h4>Модуль 2</h4>
-                <p>В разработке...</p>
+                <p>Материал в разработке</p>
             </div>
             <div class="module-card module-empty">
                 <span>Скоро</span>
                 <h4>Модуль 3</h4>
-                <p>В разработке...</p>
+                <p>Материал в разработке</p>
             </div>
         </section>
-        
-        <div style="text-align: center; margin-bottom: 70px;">
-            <a href="https://t.me/khi_knows_bot" target="_blank" class="hero-cta">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.11-1.79 6.85-2.97 8.22-3.55 3.91-1.67 4.72-1.96 5.25-1.97.12 0 .39.03.56.17.14.12.18.28.2.4-.02.07-.02.13-.04.25z"/></svg>
-                Получить персональный доступ ➔
-            </a>
-        </div>
 
         <!-- 5. USEFUL MATERIALS (NEW MECHANIC) -->
         <div class="section-header">
@@ -746,21 +777,36 @@
         </div>
 
         <div id="materialsContent" class="materials-grid">
-            <!-- Материал 1 -->
-            <a href="https://t.me/khi_knows_bot" target="_blank" class="material-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.11-1.79 6.85-2.97 8.22-3.55 3.91-1.67 4.72-1.96 5.25-1.97.12 0 .39.03.56.17.14.12.18.28.2.4-.02.07-.02.13-.04.25z"/></svg>
-                <span>Памятка по использованию</span>
+            <!-- Материал 1: Чек-лист игр (скачивание файла minigame.pdf) -->
+            <a href="minigame.pdf" download="minigame.pdf" class="material-box">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Чек-лист из 5 быстрых игр на английском</span>
             </a>
-            <!-- Материал 2 -->
-            <a href="https://t.me/khi_knows_bot" target="_blank" class="material-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.11-1.79 6.85-2.97 8.22-3.55 3.91-1.67 4.72-1.96 5.25-1.97.12 0 .39.03.56.17.14.12.18.28.2.4-.02.07-.02.13-.04.25z"/></svg>
-                <span>Дополнительный материал</span>
+            <!-- Материал 2: Мультфильмы (скачивание файла cartoon.pdf) -->
+            <a href="cartoon.pdf" download="cartoon.pdf" class="material-box">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Список полезных мультфильмов на английском для малышей</span>
             </a>
-            <!-- Материал 3 -->
-            <a href="https://t.me/khi_knows_bot" target="_blank" class="material-box">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.05-.78 4.11-1.79 6.85-2.97 8.22-3.55 3.91-1.67 4.72-1.96 5.25-1.97.12 0 .39.03.56.17.14.12.18.28.2.4-.02.07-.02.13-.04.25z"/></svg>
-                <span>Дополнительный материал</span>
+            <!-- Материал 3: Политика (скачивание файла politic.pdf) -->
+            <a href="politic.pdf" download="politic.pdf" class="material-box">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Политика конфиденциальности</span>
             </a>
+            <!-- Материал 4: Согласие (скачивание файла soglas.pdf) -->
+            <a href="soglas.pdf" download="soglas.pdf" class="material-box">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Согласие на обработку данных</span>
+            </a>
+            <!-- Свободная пустая плашка 1 -->
+            <div class="material-box" style="border-style: dashed; opacity: 0.7; cursor: default;">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span>Материал в разработке</span>
+            </div>
+            <!-- Свободная пустая плашка 2 -->
+            <div class="material-box" style="border-style: dashed; opacity: 0.7; cursor: default;">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span>Материал в разработке</span>
+            </div>
         </div>
 
         <!-- 6. FAQ SECTION -->
@@ -787,8 +833,8 @@
             <p>Авторская программа по раннему изучению английского языка.</p>
             <p>Все права защищены.</p>
             <div class="legal-links">
-                <a href="javascript:void(0)" onclick="alert('Документ будет добавлен позже')">Политика конфиденциальности</a>
-                <a href="javascript:void(0)" onclick="alert('Документ будет добавлен позже')">Согласие на обработку данных</a>
+                <a href="politic.pdf" download="politic.pdf">Политика конфиденциальности</a>
+                <a href="soglas.pdf" download="soglas.pdf">Согласие на обработку данных</a>
             </div>
         </footer>
     </div>
